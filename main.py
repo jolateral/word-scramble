@@ -1,0 +1,31 @@
+import random
+
+"""This the main file of the word scramble game.
+This program specficially reviews while loops, for loops, and the list data type."""
+
+# initiate a random list of words
+word_list = ["apple", "quantum", "umbrella", "spider", "orange"]
+
+"""This function is the start to the game."""
+def run_game() -> None:
+    # choose the answer
+    answer = random.choice(word_list)
+
+    # initiate the player's answer list
+    guess_so_far = []
+    for i in range(len(answer)):
+        guess_so_far.append("_")
+
+    # start the game!
+    print("Let's play Hangman! Guess a letter:")
+    guess = input()
+
+    if guess in answer:
+        counter = 0
+        for i in answer:
+            if i == guess:
+                guess_so_far[counter] = guess
+            counter += 1
+        
+        print("Good job! Here's your progress so far:")
+        print(guess_so_far)
