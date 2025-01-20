@@ -17,15 +17,31 @@ def run_game() -> None:
         guess_so_far.append("_")
 
     # start the game!
-    print("Let's play Hangman! Guess a letter:")
-    guess = input()
+    print("Let's play Hangman! To guess a word, type 'word'. If you want to guess a letter, type 'letter.")
 
-    if guess in answer:
-        counter = 0
-        for i in answer:
-            if i == guess:
-                guess_so_far[counter] = guess
-            counter += 1
-        
-        print("Good job! Here's your progress so far:")
-        print(guess_so_far)
+    action = input()
+
+    if action == "letter":  # the player guesses a letter
+        print("What letter would you like to guess?")
+        guess = input()
+
+        if guess in answer:
+            counter = 0
+            for i in answer:
+                if i == guess:
+                    guess_so_far[counter] = guess
+                counter += 1
+            
+            print("Good job! Here's your progress so far:")
+            print(guess_so_far)
+
+    elif action == "word":
+        print("What word would you like to guess?")
+        guess = input()
+
+        # compare the guess with the answer
+        if guess == answer:
+            print("You got it! The answer was " + answer)
+            return
+        else:   # the guess is not correct
+            ...
